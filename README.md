@@ -69,6 +69,8 @@ lt --port 6969
 ngrok http 6969
 ```
 
+PS: localhost need you to verify the tunnel. GO to the link you made and follow the instructions 
+
 4. Add your tunnel URL to [Trash Panda Royal](https://trash-panda-royal.vercel.app/join) to start playing!
 
 ## Template Usage
