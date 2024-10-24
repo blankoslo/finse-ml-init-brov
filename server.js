@@ -52,6 +52,7 @@ app.use(bodyParser.json());
 app.post('/', (req, res) => {
     // Game state from request body
     const { gameState, player, enemy } = req.body;
+    console.log(req.body)
 
     // Log the current game state (optional)
     console.log('Game State:', gameState);
