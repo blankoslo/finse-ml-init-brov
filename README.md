@@ -35,6 +35,30 @@ R = Facing Right
 # = Wall
 ```
 
+## Board Representation
+
+The `gameState` string represents an 8x8 game board with each row separated by newline characters (`\n`).
+
+The string structure:
+- Contains 8 rows of 8 characters each 
+- Each row is separated by `\n`
+- Total length: 71 characters (63 for the board + 7 newlines)
+- Access a position: `gameState.split('\n')[y][x]`
+- Total board size: 8x8 tiles
+- Middle of the board (rows 3 and 4) contain walls
+
+Example board:
+```
+.......D
+........
+........
+########    // Middle walls are always here
+########    // Middle walls are always here
+........
+........
+D.......
+```
+
 ## Bot Response Moves
 Your bot should return one of these numbers:
 ```
