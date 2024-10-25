@@ -15,7 +15,8 @@ app.MapGet("/", () => "Hello World!");
 app.MapPost("/", async (Payload payload, CancellationToken token) =>
 {    
     Console.WriteLine($"\nGameState:\n{payload.GameState}\n");
-    char input = await WaitForKey(1000, token);
+    Console.WriteLine("YOUR TURN!!!!!!!!!");
+    char input = await WaitForKey(3000, token);
     
     var mov = input switch {
         'w' => 0,
@@ -23,8 +24,17 @@ app.MapPost("/", async (Payload payload, CancellationToken token) =>
         's' => 3,
         'd' => 2,
         _ => 3
-    };     
-    Console.WriteLine($"Doing {mov}");  
+    };
+    
+    var act = input switch {
+        'w' => "Fram",
+        'd' => "Snu høyre",
+        'a' => "Snu venstre",
+        's' => "SKYTER!!!",
+        _ => "N/A"
+    };
+    
+    Console.WriteLine($"\n ** {act} **");  
     return mov;
 });
 
@@ -32,6 +42,7 @@ await app.RunAsync();
 
 static async Task<char> WaitForKey(int ms, CancellationToken token)
 {
+    Console.WriteLine($"3s");
     int delay = 0;
     while (delay < ms) {
         if (Console.KeyAvailable) {
@@ -40,7 +51,10 @@ static async Task<char> WaitForKey(int ms, CancellationToken token)
 
         await Task.Delay(50, token);
         delay += 50;
+        if(delay % 1000 == 0 && (ms - delay) != 0)
+            Console.WriteLine($"{(ms - delay)/1000}s");
     }
+    Console.WriteLine($"0s!\nAUTO-FIRE ENGAGED!!");
     return 's';
 }
 
