@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "joma", "joma\joma.csproj", "{6072C257-02CB-48A3-97C8-67C3BB67DDEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6072C257-02CB-48A3-97C8-67C3BB67DDEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6072C257-02CB-48A3-97C8-67C3BB67DDEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6072C257-02CB-48A3-97C8-67C3BB67DDEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6072C257-02CB-48A3-97C8-67C3BB67DDEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B6B0BF3-969C-43BC-952E-DCB090C8992A}
+	EndGlobalSection
+EndGlobal
