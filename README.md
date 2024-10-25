@@ -62,10 +62,10 @@ D.......
 ## Bot Response Moves
 Your bot should return one of these numbers:
 ```
-0 = Shoot
-1 = Turn Left
-2 = Turn Right
-3 = Move Forward
+0 = Move Forward
+1 = Turn Right
+2 = Turn Left
+3 = Shoot
 ```
 
 ## Quick Start
