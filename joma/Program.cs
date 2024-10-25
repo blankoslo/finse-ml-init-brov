@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors();
 
@@ -16,7 +18,8 @@ app.MapPost("/", async (Payload payload, CancellationToken token) =>
 {    
     Console.WriteLine($"\nGameState:\n{payload.GameState}\n");
     Console.WriteLine("YOUR TURN!!!!!!!!!");
-    char input = await WaitForKey(3000, token);
+    Beep("Frog");
+    char input = await WaitForKey(2000, token);
     
     var mov = input switch {
         'w' => 0,
@@ -33,7 +36,6 @@ app.MapPost("/", async (Payload payload, CancellationToken token) =>
         's' => "SKYTER!!!",
         _ => "N/A"
     };
-    
     Console.WriteLine($"\n ** {act} **");  
     return mov;
 });
@@ -54,8 +56,24 @@ static async Task<char> WaitForKey(int ms, CancellationToken token)
         if(delay % 1000 == 0 && (ms - delay) != 0)
             Console.WriteLine($"{(ms - delay)/1000}s");
     }
-    Console.WriteLine($"0s!\nAUTO-FIRE ENGAGED!!");
+    Console.WriteLine($"0s!\nAUTO-FIRE ENGAGED!! \a");
+    
     return 's';
+}
+
+static void Beep(string lyd){
+    var process = new Process
+    {
+        StartInfo = new ProcessStartInfo
+        {
+            FileName = "/bin/bash",
+            Arguments = $"-c \"afplay /System/Library/Sounds/{lyd}.aiff\"",
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+        }
+    };
+    process.Start();
 }
 
 public class Payload
