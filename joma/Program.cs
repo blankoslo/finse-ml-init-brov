@@ -12,12 +12,12 @@ app.UseCors(c =>
 
 app.MapGet("/", () => "Hello World!");
 
-app.MapPost("/", (Payload payload, CancellationToken token) =>
+app.MapPost("/", async (Payload payload, CancellationToken token) =>
 {    
     Console.WriteLine($"\nGameState:\n{payload.GameState}\n");
-    ConsoleKeyInfo input = Console.ReadKey();
+    char input = await WaitForKey(1000, token);
     
-    var mov = input.KeyChar switch {
+    var mov = input switch {
         'w' => 0,
         'a' => 1,
         's' => 3,
@@ -29,6 +29,20 @@ app.MapPost("/", (Payload payload, CancellationToken token) =>
 });
 
 await app.RunAsync();
+
+static async Task<char> WaitForKey(int ms, CancellationToken token)
+{
+    int delay = 0;
+    while (delay < ms) {
+        if (Console.KeyAvailable) {
+            return Console.ReadKey().KeyChar;
+        }
+
+        await Task.Delay(50, token);
+        delay += 50;
+    }
+    return 's';
+}
 
 public class Payload
 {
